@@ -1,0 +1,5 @@
+<%= content_tag :div,
+  id: "customers_data",
+  data: @customers.to_json do %>
+<% end %>
+<%= javascript_pack_tag 'components/Customers' %>
