@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_23_215100) do
+ActiveRecord::Schema.define(version: 2018_09_06_160247) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,28 @@ ActiveRecord::Schema.define(version: 2018_08_23_215100) do
     t.string "shipping_province"
     t.string "shipping_country"
     t.string "shipping_zipcode"
+  end
+
+  create_table "employees", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "street"
+    t.string "city"
+    t.string "state"
+    t.string "zip"
+    t.string "phone"
+    t.string "cell_phone"
+    t.string "fax"
+    t.string "email"
+    t.string "sin"
+    t.string "job_title"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.string "hourly_rate"
+    t.string "gross_pay"
+    t.datetime "date_of_birth"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
