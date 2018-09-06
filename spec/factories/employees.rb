@@ -11,5 +11,6 @@ FactoryBot.define do
     email { FFaker::Internet.email }
     start_date { FFaker::Time.between(2.years.ago, 1.years.ago) }
     date_of_birth { FFaker::Time.between(32.years.ago, 30.years.ago) }
+    company
   end
 end

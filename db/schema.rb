@@ -10,10 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_06_160247) do
+ActiveRecord::Schema.define(version: 2018_09_06_180850) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "companies", force: :cascade do |t|
+    t.string "name"
+    t.string "street"
+    t.string "city"
+    t.string "state"
+    t.string "country"
+    t.string "zip"
+    t.string "contact"
+    t.string "phone"
+    t.string "fax"
+    t.string "email"
+    t.string "website"
+    t.string "HST"
+    t.string "PST"
+    t.string "GST"
+    t.string "us_dot"
+    t.string "mc_number"
+    t.string "currency"
+    t.string "carrier_code"
+    t.string "scac_code"
+    t.string "last_invoice_number"
+    t.string "factory_company"
+    t.string "factoring_percentage"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "customers", force: :cascade do |t|
     t.string "name"
@@ -41,6 +68,8 @@ ActiveRecord::Schema.define(version: 2018_09_06_160247) do
     t.string "shipping_province"
     t.string "shipping_country"
     t.string "shipping_zipcode"
+    t.bigint "company_id"
+    t.index ["company_id"], name: "index_customers_on_company_id"
   end
 
   create_table "employees", force: :cascade do |t|
@@ -63,6 +92,10 @@ ActiveRecord::Schema.define(version: 2018_09_06_160247) do
     t.datetime "date_of_birth"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "company_id"
+    t.index ["company_id"], name: "index_employees_on_company_id"
   end
 
+  add_foreign_key "customers", "companies"
+  add_foreign_key "employees", "companies"
 end

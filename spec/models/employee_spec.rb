@@ -12,4 +12,6 @@ RSpec.describe Employee, type: :model do
   it { is_expected.to validate_presence_of(:zip) }
   it { is_expected.to validate_presence_of(:cell_phone) }
   it { is_expected.to validate_presence_of(:email) }
+
+  it { should belong_to(:company) }
 end
