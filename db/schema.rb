@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_07_173048) do
+ActiveRecord::Schema.define(version: 2018_09_07_185604) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -145,6 +145,27 @@ ActiveRecord::Schema.define(version: 2018_09_07_173048) do
     t.index ["company_id"], name: "index_locations_on_company_id"
   end
 
+  create_table "trailers", force: :cascade do |t|
+    t.string "unit_number"
+    t.string "make"
+    t.string "model"
+    t.string "year"
+    t.string "plate_number"
+    t.string "state"
+    t.string "country"
+    t.string "vin"
+    t.string "weight"
+    t.string "price"
+    t.datetime "start_date"
+    t.datetime "leave_date"
+    t.bigint "truck_id"
+    t.bigint "company_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_trailers_on_company_id"
+    t.index ["truck_id"], name: "index_trailers_on_truck_id"
+  end
+
   create_table "trucks", force: :cascade do |t|
     t.string "unit_number"
     t.string "make"
@@ -168,6 +189,8 @@ ActiveRecord::Schema.define(version: 2018_09_07_173048) do
   add_foreign_key "drivers", "companies"
   add_foreign_key "employees", "companies"
   add_foreign_key "locations", "companies"
+  add_foreign_key "trailers", "companies"
+  add_foreign_key "trailers", "trucks"
   add_foreign_key "trucks", "companies"
   add_foreign_key "trucks", "drivers"
 end
