@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :location do
     name { FFaker::Name.name }
-    street { FFaker::AddressCA.city }
+    street { FFaker::AddressCA.street_address }
     city { FFaker::AddressCA.city }
     state { FFaker::AddressCA.province }
     cauntry { FFaker::AddressCA.country }
