@@ -17,4 +17,5 @@ RSpec.describe Company, type: :model do
 
   it { should have_many(:customers) }
   it { should have_many(:employees) }
+  it { should have_many(:drivers) }
 end

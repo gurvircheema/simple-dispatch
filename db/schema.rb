@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_06_180850) do
+ActiveRecord::Schema.define(version: 2018_09_07_015015) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,6 +72,36 @@ ActiveRecord::Schema.define(version: 2018_09_06_180850) do
     t.index ["company_id"], name: "index_customers_on_company_id"
   end
 
+  create_table "drivers", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "street"
+    t.string "city"
+    t.string "state"
+    t.string "country"
+    t.string "zip"
+    t.string "phone"
+    t.string "cell_phone"
+    t.boolean "is_company_driver"
+    t.boolean "is_owner_operator"
+    t.string "email"
+    t.string "sin"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.datetime "date_of_birth"
+    t.string "license_number"
+    t.datetime "license_expiry_date"
+    t.datetime "license_issue_date"
+    t.string "license_province"
+    t.string "passport"
+    t.string "passport_issue_country"
+    t.string "citizenship_country"
+    t.bigint "company_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_drivers_on_company_id"
+  end
+
   create_table "employees", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -97,5 +127,6 @@ ActiveRecord::Schema.define(version: 2018_09_06_180850) do
   end
 
   add_foreign_key "customers", "companies"
+  add_foreign_key "drivers", "companies"
   add_foreign_key "employees", "companies"
 end
